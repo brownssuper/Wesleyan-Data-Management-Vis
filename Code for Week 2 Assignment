@@ -1,0 +1,9 @@
+libname mydata "/courses/d1406ae5ba27fe300" access=readonly; 
+ 
+Data new; set mydata.gapminder; 
+Keep armedforcesrate internetuserate employrate afr iur er; 
+run; 
+ 
+proc contents data=new; run; 
+proc print data=new; run; 
+proc freq; tables armedforcesrate internetuserate employrate; run;
