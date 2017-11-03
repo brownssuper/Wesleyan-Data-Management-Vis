@@ -1,0 +1,47 @@
+libname mydata "/courses/d1406ae5ba27fe300" access=readonly; 
+Data new; set mydata.gapminder; 
+Keep armedforcesrate internetuserate employrate afr iur er; 
+ 
+ 
+/*data management for armedforcesrate*/ 
+if armedforcesrate < 0.5  then afr=1; 
+if armedforcesrate >= 0.5 and armedforcesrate < 1 then afr=2; 
+if armedforcesrate >= 1 and armedforcesrate < 1.5 then afr=3; 
+if armedforcesrate >= 1.5 and armedforcesrate < 2 then afr=4; 
+if armedforcesrate >= 2 and armedforcesrate < 2.5 then afr=5; 
+if armedforcesrate >= 2.5 and armedforcesrate < 3 then afr=6; 
+if armedforcesrate >= 3 and armedforcesrate < 3.5 then afr=7; 
+if armedforcesrate >= 3.5 and armedforcesrate < 4 then afr=8; 
+if armedforcesrate >= 4 and armedforcesrate < 4.5 then afr=9; 
+if armedforcesrate >= 5 then afr=10; 
+ 
+/*data management for internetuserate*/ 
+if internetuserate < 10  then iur=1; 
+if internetuserate >= 10 and internetuserate < 20 then iur=2; 
+if internetuserate >= 20 and internetuserate < 30 then iur=3; 
+if internetuserate >= 30 and internetuserate < 40 then iur=4; 
+if internetuserate >= 40 and internetuserate < 50 then iur=5; 
+if internetuserate >= 50 and internetuserate < 60 then iur=6; 
+if internetuserate >= 60 and internetuserate < 70 then iur=7; 
+if internetuserate >= 70 and internetuserate < 80 then iur=8; 
+if internetuserate >= 80 and internetuserate < 90 then iur=9; 
+if internetuserate > 90  then iur=10; 
+ 
+/*data management for employrate*/ 
+if employrate < 10 then er=1; 
+if employrate >= 10 and employrate < 20 then er=2; 
+if employrate >= 20 and employrate < 30 then er=3; 
+if employrate >= 30 and employrate < 40 then er=4; 
+if employrate >= 40 and employrate < 50 then er=5; 
+if employrate >= 50 and employrate < 60 then er=6; 
+if employrate >= 60 and employrate < 70 then er=7; 
+if employrate >= 70 and employrate < 80 then er=8; 
+if employrate >= 80 and employrate < 90 then er=9; 
+if employrate >= 90 then er=10; 
+ 
+run; 
+ 
+ 
+/*frequency tables*/ 
+PROC FREQ; tables afr iur er; 
+run;
